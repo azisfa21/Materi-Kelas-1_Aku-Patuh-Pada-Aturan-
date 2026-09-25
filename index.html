@@ -1,0 +1,1096 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pendidikan Pancasila Kelas 1 - Aku Patuh pada Aturan di Rumah</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Fredoka', sans-serif;
+      background-color: #F0F9FF;
+    }
+    .bounce-hover {
+      transition: all 0.2s ease-in-out;
+    }
+    .bounce-hover:hover {
+      transform: translateY(-3px) scale(1.03);
+    }
+    .pulse-animation {
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.04); }
+    }
+    .card-shadow {
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08), 0 8px 10px -6px rgba(0, 0, 0, 0.04);
+    }
+    .drag-card {
+      cursor: grab;
+      user-select: none;
+      touch-action: manipulation;
+    }
+    .drag-card:active {
+      cursor: grabbing;
+    }
+    .drop-highlight {
+      background-color: #f0fdf4 !important;
+      border-color: #22c55e !important;
+      transform: scale(1.02);
+    }
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20%, 60% { transform: translateX(-6px); }
+      40%, 80% { transform: translateX(6px); }
+    }
+    .shake-anim {
+      animation: shake 0.4s ease-in-out;
+    }
+  </style>
+</head>
+<body class="min-h-screen pb-16 text-slate-800 selection:bg-amber-200">
+
+  <!-- Header Navigasi -->
+  <header class="bg-amber-400 border-b-4 border-amber-500 sticky top-0 z-50 shadow-md">
+    <div class="max-w-4xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-2">
+      <div class="flex items-center gap-3">
+        <div class="bg-white p-2 rounded-2xl shadow-inner text-3xl">
+          🏠
+        </div>
+        <div>
+          <h1 class="text-lg md:text-2xl font-bold text-amber-950 leading-tight">Aku Patuh pada Aturan</h1>
+          <p class="text-xs md:text-sm font-semibold text-amber-900">Pendidikan Pancasila • Kelas 1 SD (Bab 2)</p>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Menu Tab Navigasi Sticky -->
+  <nav class="bg-sky-50/95 backdrop-blur-md sticky top-[64px] z-40 py-2.5 border-b-2 border-sky-200 shadow-sm">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="flex justify-start md:justify-center gap-2 overflow-x-auto pb-1 scrollbar-thin scroll-smooth items-center">
+        <button onclick="switchTab('materi')" id="tab-materi" class="tab-btn bg-amber-500 text-white font-bold px-4 py-2.5 rounded-2xl shadow-md border-b-4 border-amber-700 bounce-hover text-xs md:text-sm flex items-center gap-1.5 whitespace-nowrap shrink-0 ring-4 ring-offset-2 ring-amber-400 scale-105">
+          <span>📖</span> Materi Belajar
+        </button>
+        <button onclick="switchTab('kuis')" id="tab-kuis" class="tab-btn bg-sky-400 text-white font-bold px-4 py-2.5 rounded-2xl shadow-md border-b-4 border-sky-600 bounce-hover text-xs md:text-sm flex items-center gap-1.5 whitespace-nowrap shrink-0 opacity-90 hover:opacity-100">
+          <span>🧩</span> Gim 1: Tebak Aturan
+        </button>
+        <button onclick="switchTab('jodohkan')" id="tab-jodohkan" class="tab-btn bg-emerald-400 text-white font-bold px-4 py-2.5 rounded-2xl shadow-md border-b-4 border-emerald-600 bounce-hover text-xs md:text-sm flex items-center gap-1.5 whitespace-nowrap shrink-0 opacity-90 hover:opacity-100">
+          <span>⏰</span> Gim 2: Kapan Waktunya?
+        </button>
+        <button onclick="switchTab('kata')" id="tab-kata" class="tab-btn bg-purple-400 text-white font-bold px-4 py-2.5 rounded-2xl shadow-md border-b-4 border-purple-600 bounce-hover text-xs md:text-sm flex items-center gap-1.5 whitespace-nowrap shrink-0 opacity-90 hover:opacity-100">
+          <span>✏️</span> Gim 3: Mari Menulis
+        </button>
+        <button onclick="switchTab('misi')" id="tab-misi" class="tab-btn bg-rose-400 text-white font-bold px-4 py-2.5 rounded-2xl shadow-md border-b-4 border-rose-600 bounce-hover text-xs md:text-sm flex items-center gap-1.5 whitespace-nowrap shrink-0 opacity-90 hover:opacity-100">
+          <span>🎯</span> Gim 4: Geser & Kelompokkan
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="max-w-4xl mx-auto px-4 mt-6">
+
+    <!-- TAB 1: MATERI BELAJAR LENGKAP -->
+    <section id="sec-materi" class="tab-content block space-y-6">
+      
+      <!-- Kartu Pengertian Aturan -->
+      <div class="bg-white rounded-3xl p-6 card-shadow border-4 border-amber-200">
+        <div class="flex items-center justify-between mb-3">
+          <h2 class="text-xl md:text-2xl font-bold text-amber-800 flex items-center gap-2">
+            <span>👨‍👩‍👧‍👦</span> Apa itu Aturan di Rumah?
+          </h2>
+        </div>
+        <p class="text-base md:text-lg text-slate-700 leading-relaxed">
+          Aturan adalah <strong class="text-amber-600">petunjuk yang harus kita ikuti</strong> di rumah. Setiap keluarga memiliki aturan. Semua anggota keluarga harus mematuhinya. Aturan dibuat untuk <strong class="text-emerald-600">kebaikan bersama</strong> agar rumah bersih, aman, dan tenteram!
+        </p>
+      </div>
+
+      <!-- Tokoh & Kebiasaan Baik (Halaman 39) -->
+      <div>
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-lg md:text-xl font-bold text-slate-800 flex items-center gap-2">
+            <span>✨</span> Amati Kebiasaan Baik Teman-Teman! (Hal. 39)
+          </h3>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+
+          <!-- Panca -->
+          <div class="bg-amber-50 rounded-3xl p-5 border-3 border-amber-300 card-shadow flex items-start gap-4 bounce-hover">
+            <div class="text-5xl bg-amber-200 p-3 rounded-2xl flex-shrink-0">🧼</div>
+            <div class="flex-1">
+              <h4 class="font-bold text-lg text-amber-950">Panca</h4>
+              <p class="text-sm text-slate-700 mt-1">Mandi <strong class="text-amber-800">2 kali sehari</strong> (pagi & sore) untuk menjaga kesehatan tubuh.</p>
+            </div>
+          </div>
+
+          <!-- Bina -->
+          <div class="bg-pink-50 rounded-3xl p-5 border-3 border-pink-300 card-shadow flex items-start gap-4 bounce-hover">
+            <div class="text-5xl bg-pink-200 p-3 rounded-2xl flex-shrink-0">🪥</div>
+            <div class="flex-1">
+              <h4 class="font-bold text-lg text-pink-950">Bina</h4>
+              <p class="text-sm text-slate-700 mt-1">Selalu <strong class="text-pink-800">sikat gigi</strong> sebelum tidur agar gigi tidak berlubang.</p>
+            </div>
+          </div>
+
+          <!-- Sakti -->
+          <div class="bg-emerald-50 rounded-3xl p-5 border-3 border-emerald-300 card-shadow flex items-start gap-4 bounce-hover">
+            <div class="text-5xl bg-emerald-200 p-3 rounded-2xl flex-shrink-0">🤲</div>
+            <div class="flex-1">
+              <h4 class="font-bold text-lg text-emerald-950">Sakti</h4>
+              <p class="text-sm text-slate-700 mt-1">Selalu <strong class="text-emerald-800">berdoa</strong> sebelum belajar dan <strong class="text-emerald-800">cuci tangan</strong> sebelum makan.</p>
+            </div>
+          </div>
+
+          <!-- Sila -->
+          <div class="bg-purple-50 rounded-3xl p-5 border-3 border-purple-300 card-shadow flex items-start gap-4 bounce-hover">
+            <div class="text-5xl bg-purple-200 p-3 rounded-2xl flex-shrink-0">🧹</div>
+            <div class="flex-1">
+              <h4 class="font-bold text-lg text-purple-950">Sila</h4>
+              <p class="text-sm text-slate-700 mt-1">Rajin <strong class="text-purple-800">menyapu</strong> dan menjaga kebersihan rumah bersama keluarga.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Aturan Tidur (Halaman 40) -->
+      <div class="bg-indigo-900 text-white rounded-3xl p-6 card-shadow border-4 border-indigo-500 relative overflow-hidden">
+        <div class="relative z-10 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div class="space-y-3 flex-1">
+            <div class="flex items-center gap-2">
+              <span class="bg-indigo-700 text-indigo-100 text-xs font-bold px-3 py-1 rounded-full">Mari Mencari Tahu (Hal. 40)</span>
+            </div>
+            <h3 class="text-xl md:text-2xl font-bold text-amber-300">🌙 Pukul Berapa Kamu Tidur?</h3>
+            <p class="text-sm md:text-base text-indigo-100 leading-relaxed">
+              Tidur tepat waktu sangat penting. Sebelum tidur, kita harus menggosok gigi, mencuci kaki dan tangan, serta berdoa!
+            </p>
+          </div>
+          <div class="bg-indigo-800 p-4 rounded-2xl border-2 border-indigo-400 text-center flex-shrink-0">
+            <div class="text-5xl mb-1">🛌⏰</div>
+            <span class="text-xs font-bold text-amber-300">Tidur Tepat Waktu</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6 Aturan Sakti di Rumah (Halaman 41) -->
+      <div class="bg-gradient-to-br from-amber-50 to-orange-100 rounded-3xl p-6 border-4 border-amber-300 card-shadow">
+        <div class="flex justify-between items-center mb-4">
+          <h3 class="text-lg md:text-xl font-bold text-amber-950 flex items-center gap-2">
+            <span>📋</span> 6 Aturan Penting di Rumah Sakti (Hal. 41)
+          </h3>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+          <div class="bg-white p-4 rounded-2xl border-2 border-amber-200 text-center card-shadow bounce-hover flex flex-col items-center">
+            <span class="text-4xl mb-1">1. 🛏️</span>
+            <p class="text-sm font-bold text-slate-800">Tidur tepat waktu</p>
+          </div>
+          <div class="bg-white p-4 rounded-2xl border-2 border-amber-200 text-center card-shadow bounce-hover flex flex-col items-center">
+            <span class="text-4xl mb-1">2. 🧹</span>
+            <p class="text-sm font-bold text-slate-800">Menjaga kebersihan rumah</p>
+          </div>
+          <div class="bg-white p-4 rounded-2xl border-2 border-amber-200 text-center card-shadow bounce-hover flex flex-col items-center">
+            <span class="text-4xl mb-1">3. 🧸</span>
+            <p class="text-sm font-bold text-slate-800">Merapikan mainan setelah bermain</p>
+          </div>
+          <div class="bg-white p-4 rounded-2xl border-2 border-amber-200 text-center card-shadow bounce-hover flex flex-col items-center">
+            <span class="text-4xl mb-1">4. 📖</span>
+            <p class="text-sm font-bold text-slate-800">Berdoa sebelum belajar</p>
+          </div>
+          <div class="bg-white p-4 rounded-2xl border-2 border-amber-200 text-center card-shadow bounce-hover flex flex-col items-center">
+            <span class="text-4xl mb-1">5. 🧼</span>
+            <p class="text-sm font-bold text-slate-800">Mencuci tangan sebelum & sesudah makan</p>
+          </div>
+          <div class="bg-white p-4 rounded-2xl border-2 border-amber-200 text-center card-shadow bounce-hover flex flex-col items-center">
+            <span class="text-4xl mb-1">6. 👟</span>
+            <p class="text-sm font-bold text-slate-800">Menyimpan sepatu di rak sepatu</p>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- TAB 2: GIM 1 - TEBAK ATURAN (KUIS INTERAKTIF) -->
+    <section id="sec-kuis" class="tab-content hidden">
+      <div class="bg-white rounded-3xl p-6 card-shadow border-4 border-sky-300">
+        <div class="flex justify-between items-center mb-4">
+          <span class="bg-sky-100 text-sky-800 text-xs md:text-sm font-bold px-3 py-1 rounded-full">Gim 1: Kuis Pilihan Ganda</span>
+          <div class="flex items-center gap-3">
+            <div class="text-xs font-bold text-amber-600 bg-amber-50 px-2.5 py-1 rounded-full border border-amber-200 flex items-center gap-1">
+              <span>⭐ Bintang:</span>
+              <span id="quiz-stars" class="text-amber-700 font-extrabold text-sm">0</span>
+            </div>
+            <div class="text-sm font-bold text-slate-600 flex items-center gap-2">
+              <span>Skor:</span>
+              <span id="quiz-score" class="text-emerald-600 text-xl font-bold bg-emerald-100 px-3 py-0.5 rounded-full border border-emerald-300">0</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Progress Bar Kuis -->
+        <div class="w-full bg-slate-100 h-3 rounded-full overflow-hidden mb-4 border border-slate-200">
+          <div id="quiz-progress-bar" class="bg-gradient-to-r from-sky-400 to-emerald-400 h-full transition-all duration-300" style="width: 10%;"></div>
+        </div>
+
+        <div id="quiz-container" class="text-center py-2">
+          <div class="text-6xl mb-3 pulse-animation inline-block bg-sky-50 p-4 rounded-3xl border-2 border-sky-200" id="quiz-icon">🪥</div>
+          <h3 id="quiz-question" class="text-lg md:text-xl font-bold text-slate-800 my-4 max-w-lg mx-auto">
+            Bina mematuhi aturan dengan sikat gigi kapan?
+          </h3>
+
+          <div id="quiz-options" class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-md mx-auto mt-6">
+            <!-- Pilihan Jawaban diisi JavaScript -->
+          </div>
+        </div>
+
+        <div id="quiz-feedback" class="mt-6 text-center font-bold text-lg hidden p-4 rounded-2xl"></div>
+
+        <div class="flex justify-between items-center mt-6 pt-4 border-t border-slate-100 text-xs font-bold text-slate-400">
+          <span id="quiz-progress-text">Soal 1 dari 10</span>
+          <button onclick="nextQuizManual()" class="text-sky-600 hover:text-sky-800 font-bold flex items-center gap-1">
+            <span>Lewati Soal</span> ➔
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 3: GIM 2 - COCOKKAN WAKTU -->
+    <section id="sec-jodohkan" class="tab-content hidden">
+      <div class="bg-white rounded-3xl p-6 card-shadow border-4 border-emerald-300">
+        <div class="text-center mb-6">
+          <div class="flex justify-center items-center gap-2">
+            <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-3 py-1 rounded-full">Halaman 43</span>
+          </div>
+          <h3 class="text-xl md:text-2xl font-bold text-emerald-900 mt-2">⏰ Kapan Kita Melakukan Kegiatan Ini?</h3>
+          <p class="text-xs md:text-sm text-slate-500">Pilih waktu yang paling cocok untuk setiap gambar kegiatan!</p>
+        </div>
+
+        <div id="match-game" class="space-y-4 max-w-xl mx-auto">
+          <!-- Item Match diisi via JS -->
+        </div>
+
+        <div id="match-success" class="mt-6 p-5 bg-emerald-100 border-2 border-emerald-400 rounded-3xl text-center hidden pulse-animation">
+          <p class="text-emerald-950 font-bold text-lg">🎉 Hebat Sekali! Kamu Sudah Mengetahui Waktu Kegiatan!</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 4: GIM 3 - MARI MENULIS & SUSUN KATA -->
+    <section id="sec-kata" class="tab-content hidden">
+      <div class="bg-white rounded-3xl p-6 card-shadow border-4 border-purple-300 text-center">
+        <div class="flex justify-center items-center gap-2 mb-2">
+          <span class="bg-purple-100 text-purple-800 text-xs font-bold px-3 py-1 rounded-full">Halaman 44: Mari Menulis</span>
+        </div>
+        <h3 class="text-xl md:text-2xl font-bold text-slate-800">
+          Rangkai Kata Perilaku Baik
+        </h3>
+
+        <div class="my-6 max-w-md mx-auto bg-purple-50 p-6 rounded-3xl border-2 border-purple-200">
+          <span class="text-7xl block mb-3 pulse-animation" id="word-icon">🥣</span>
+          <p class="text-slate-700 text-base font-bold mb-4" id="word-hint">Kegiatan sebelum berangkat sekolah:</p>
+          
+          <div class="flex justify-center flex-wrap gap-2 mb-6" id="word-display">
+            <!-- Kotak huruf -->
+          </div>
+
+          <div class="flex flex-wrap justify-center gap-2" id="letter-buttons">
+            <!-- Tombol Huruf -->
+          </div>
+        </div>
+
+        <div class="flex justify-center gap-3">
+          <button onclick="resetWordGame()" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-4 py-2 rounded-xl text-sm shadow">
+            🔄 Ulangi
+          </button>
+          <button onclick="nextWordGame()" class="bg-purple-500 hover:bg-purple-600 text-white font-bold px-6 py-2 rounded-xl text-sm shadow">
+            Kata Berikutnya ➔
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- TAB 5: GIM 4 - DRAG AND DROP KELOMPOK ATURAN -->
+    <section id="sec-misi" class="tab-content hidden">
+      <div class="bg-white rounded-3xl p-5 md:p-6 card-shadow border-4 border-rose-300">
+        <div class="text-center mb-6">
+          <div class="inline-block bg-rose-100 text-rose-800 text-xs md:text-sm font-bold px-3 py-1 rounded-full mb-1">
+            Gim Interaktif Drag & Drop
+          </div>
+          <h3 class="text-xl md:text-2xl font-bold text-rose-950">🎯 Geser & Kelompokkan Aturan Rumah</h3>
+          <p class="text-xs md:text-sm text-slate-600 mt-1 max-w-md mx-auto">
+            <strong>Cara Bermain:</strong> Tarik (drag) atau ketuk kartu perilaku di bawah ini, lalu masukkan ke dalam kotak 🟢 <strong>Mematuhi Aturan</strong> atau 🔴 <strong>Tidak Mematuhi Aturan</strong>!
+          </p>
+        </div>
+
+        <!-- Kolom Kartu Perilaku (Pool) -->
+        <div class="mb-6 bg-slate-50 p-4 rounded-3xl border-2 border-dashed border-slate-300">
+          <div class="flex justify-between items-center mb-3">
+            <span class="text-xs font-bold text-slate-500 uppercase tracking-wider flex items-center gap-1">
+              <span>📦</span> Kartu Perilaku (Sisa: <span id="dnd-remaining" class="text-rose-600 font-extrabold">8</span>)
+            </span>
+            <span class="text-xs font-semibold text-purple-600 bg-purple-50 px-2.5 py-0.5 rounded-full border border-purple-200">
+              💡 Boleh di-drag atau diketuk
+            </span>
+          </div>
+          
+          <div id="drag-pool" class="flex flex-wrap justify-center gap-2.5 min-h-[90px] p-2 items-center">
+            <!-- Kartu di-render oleh JavaScript -->
+          </div>
+        </div>
+
+        <!-- Area Drop Zones -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          
+          <!-- Area 1: Mematuhi Aturan (Good) -->
+          <div id="zone-good" 
+               ondragover="allowDrop(event)" 
+               ondragleave="leaveZone(event)" 
+               ondrop="handleDrop(event, 'good')" 
+               onclick="handleZoneClick('good')" 
+               class="bg-emerald-50/80 border-3 border-dashed border-emerald-400 rounded-3xl p-4 min-h-[220px] transition-all duration-200 flex flex-col items-center cursor-pointer hover:border-emerald-500">
+            <div class="flex items-center gap-2 mb-3 bg-emerald-200 text-emerald-950 px-4 py-1.5 rounded-full text-xs md:text-sm font-bold shadow-sm">
+              <span>🟢</span> Mematuhi Aturan (Anak Hebat)
+            </div>
+            <div id="cards-good" class="w-full flex flex-col gap-2 flex-1">
+              <!-- Kartu yang dimasukkan akan tampil di sini -->
+            </div>
+          </div>
+
+          <!-- Area 2: Tidak Mematuhi Aturan (Bad) -->
+          <div id="zone-bad" 
+               ondragover="allowDrop(event)" 
+               ondragleave="leaveZone(event)" 
+               ondrop="handleDrop(event, 'bad')" 
+               onclick="handleZoneClick('bad')" 
+               class="bg-rose-50/80 border-3 border-dashed border-rose-400 rounded-3xl p-4 min-h-[220px] transition-all duration-200 flex flex-col items-center cursor-pointer hover:border-rose-500">
+            <div class="flex items-center gap-2 mb-3 bg-rose-200 text-rose-950 px-4 py-1.5 rounded-full text-xs md:text-sm font-bold shadow-sm">
+              <span>🔴</span> Tidak Mematuhi Aturan
+            </div>
+            <div id="cards-bad" class="w-full flex flex-col gap-2 flex-1">
+              <!-- Kartu yang dimasukkan akan tampil di sini -->
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Feedback & Pesan Berhasil -->
+        <div class="mt-6 flex flex-col items-center gap-3">
+          <div id="dnd-feedback" class="hidden text-center p-3 rounded-2xl text-xs md:text-sm font-bold w-full max-w-md transition-all"></div>
+          
+          <div id="dnd-success-modal" class="hidden p-6 bg-amber-50 border-4 border-dashed border-amber-400 rounded-3xl text-center card-shadow w-full max-w-md pulse-animation">
+            <span class="text-5xl block mb-2">🏆⭐</span>
+            <h4 class="text-xl md:text-2xl font-bold text-amber-950">Luar Biasa! Kamu Anak Hebat!</h4>
+            <p class="text-xs md:text-sm text-amber-900 mt-2 font-medium">
+              Kamu berhasil membedakan mana kebiasaan yang mematuhi aturan dan yang tidak mematuhi aturan di rumah!
+            </p>
+            <button onclick="resetDndGame()" class="mt-4 bg-amber-500 hover:bg-amber-600 text-white font-bold px-6 py-2.5 rounded-2xl text-sm shadow-md border-b-4 border-amber-700 bounce-hover">
+              🔄 Main Lagi!
+            </button>
+          </div>
+
+          <button onclick="resetDndGame()" id="btn-reset-dnd" class="bg-slate-200 hover:bg-slate-300 text-slate-700 font-bold px-5 py-2 rounded-xl text-xs sm:text-sm shadow flex items-center gap-1.5">
+            <span>🔄</span> Ulangi Permainan
+          </button>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <script>
+    let audioCtx = null;
+    let currentActiveTab = 'materi';
+
+    function initAudio() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+    }
+
+    function playSound(type) {
+      try {
+        initAudio();
+        const ctx = audioCtx;
+        const now = ctx.currentTime;
+
+        if (type === 'correct') {
+          const osc1 = ctx.createOscillator();
+          const osc2 = ctx.createOscillator();
+          const gain = ctx.createGain();
+
+          osc1.type = 'triangle';
+          osc2.type = 'sine';
+          
+          osc1.frequency.setValueAtTime(523.25, now);
+          osc1.frequency.setValueAtTime(783.99, now + 0.12);
+          osc2.frequency.setValueAtTime(659.25, now);
+          osc2.frequency.setValueAtTime(1046.50, now + 0.12);
+
+          gain.gain.setValueAtTime(0.2, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
+
+          osc1.connect(gain);
+          osc2.connect(gain);
+          gain.connect(ctx.destination);
+
+          osc1.start(now);
+          osc2.start(now);
+          osc1.stop(now + 0.4);
+          osc2.stop(now + 0.4);
+
+        } else if (type === 'fanfare') {
+          const notes = [523.25, 659.25, 783.99, 1046.50];
+          notes.forEach((freq, i) => {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'triangle';
+            osc.frequency.setValueAtTime(freq, now + i * 0.1);
+            gain.gain.setValueAtTime(0.2, now + i * 0.1);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.1 + 0.3);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start(now + i * 0.1);
+            osc.stop(now + i * 0.1 + 0.3);
+          });
+
+        } else if (type === 'wrong') {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sawtooth';
+          osc.frequency.setValueAtTime(220, now);
+          osc.frequency.setValueAtTime(174.61, now + 0.15);
+          gain.gain.setValueAtTime(0.15, now);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + 0.35);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now);
+          osc.stop(now + 0.35);
+
+        } else if (type === 'menu') {
+          const notes = [523.25, 659.25, 783.99];
+          notes.forEach((freq, i) => {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(freq, now + i * 0.05);
+            gain.gain.setValueAtTime(0.2, now + i * 0.05);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.05 + 0.2);
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start(now + i * 0.05);
+            osc.stop(now + i * 0.05 + 0.2);
+          });
+
+        } else if (type === 'click') {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(600, now);
+          osc.frequency.exponentialRampToValueAtTime(200, now + 0.06);
+          gain.gain.setValueAtTime(0.15, now);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + 0.06);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start(now);
+          osc.stop(now + 0.06);
+        }
+      } catch (e) {
+        console.log("Audio play error:", e);
+      }
+    }
+
+    function switchTab(tabId) {
+      playSound('menu');
+      currentActiveTab = tabId;
+      document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('.tab-btn').forEach(el => {
+        el.classList.remove('ring-4', 'ring-offset-2', 'ring-amber-400', 'scale-105', 'opacity-100');
+        el.classList.add('opacity-90');
+      });
+      
+      const activeBtn = document.getElementById(`tab-${tabId}`);
+      document.getElementById(`sec-${tabId}`).classList.remove('hidden');
+      if (activeBtn) {
+        activeBtn.classList.remove('opacity-90');
+        activeBtn.classList.add('ring-4', 'ring-offset-2', 'ring-amber-400', 'scale-105', 'opacity-100');
+        activeBtn.scrollIntoView({ behavior: 'smooth', inline: 'nearest', block: 'nearest' });
+      }
+
+      if (tabId === 'misi') {
+        renderDndGame();
+      }
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    /* GIM 1 KUIS DATA */
+    const quizData = [
+      {
+        icon: "🪥",
+        q: "Bina ingin giginya selalu bersih dan bebas kuman. Kapan waktu terbaik Bina menggosok gigi?",
+        options: ["Sebelum tidur & setelah makan", "Saat sedang makan es krim"],
+        answer: 0,
+        explain: "Hebat! Menggosok gigi sebelum tidur mencegah kuman merusak gigi saat malam hari."
+      },
+      {
+        icon: "🧼",
+        q: "Panca baru selesai bermain bola di lapangan dan badannya kotor. Apa yang harus Panca lakukan?",
+        options: ["Mandi dengan sabun sampai bersih", "Langsung tidur di kasur"],
+        answer: 0,
+        explain: "Pintar! Mandi 2 kali sehari membuat badan sehat, wangi, dan segar."
+      },
+      {
+        icon: "🧸",
+        q: "Mainan Sakti berserakan di lantai kamar. Mengapa mainan harus segera dirapikan?",
+        options: ["Agar kamar rapi & tidak tersandung", "Agar mainan dihilangkan kuis"],
+        answer: 0,
+        explain: "Luar biasa! Merapikan mainan menjaga keselamatan dan kebersihan kamar."
+      },
+      {
+        icon: "👟",
+        q: "Sila baru saja tiba di rumah dari sekolah. Di manakah Sila harus meletakkan sepatunya?",
+        options: ["Disimpan rapi di rak sepatu", "Dilempar di depan pintu rumah"],
+        answer: 0,
+        explain: "Top! Sepatu harus disimpan di rak sepatu agar rumah tetap rapi."
+      },
+      {
+        icon: "🤲",
+        q: "Sakti dan keluarga sudah berkumpul di meja makan. Apa yang dilakukan Sakti sebelum makan?",
+        options: ["Mencuci tangan dan berdoa", "Langsung berebut lauk makanan"],
+        answer: 0,
+        explain: "Bagus sekali! Mencuci tangan membuang kuman dan berdoa sebagai tanda bersyukur."
+      },
+      {
+        icon: "🌙",
+        q: "Jam dinding menunjukkan pukul 08.00 malam. Apa aturan tidur yang baik untuk anak SD?",
+        options: ["Tidur tepat waktu agar esok segar", "Begadang bermain HP sampai subuh"],
+        answer: 0,
+        explain: "Pintar! Tidur tepat waktu membuat tubuh sehat dan tidak terlambat sekolah."
+      },
+      {
+        icon: "🧹",
+        q: "Ibu sedang sibuk membersihkan lantai rumah. Perilaku anak hebat yang patuh aturan adalah...",
+        options: ["Membantu Ibu & buang sampah di tempatnya", "Mengotori lantai yang sudah bersih"],
+        answer: 0,
+        explain: "Hebat! Menjaga kebersihan rumah adalah tugas seluruh anggota keluarga."
+      },
+      {
+        icon: "📖",
+        q: "Sakti ingin mulai belajar dan membaca buku. Sebelum memulai kegiatan, Sakti selalu...",
+        options: ["Berdoa kepada Tuhan Yang Maha Esa", "Berteriak-teriak kencang"],
+        answer: 0,
+        explain: "Luar biasa! Berdoa sebelum belajar memohon kemudahan dalam menuntut ilmu."
+      },
+      {
+        icon: "🏠",
+        q: "Mengapa setiap keluarga di rumah harus memiliki aturan yang ditaati bersama?",
+        options: ["Agar rumah bersih, aman, & tenteram", "Agar kita dimarahi setiap hari"],
+        answer: 0,
+        explain: "Benar sekali! Aturan dibuat untuk kebaikan dan kenyamanan bersama."
+      },
+      {
+        icon: "👕",
+        q: "Baju seragam kotor setelah dipakai seharian sebaiknya diletakkan di mana?",
+        options: ["Masuk keranjang pakaian kotor", "Dibiarkan berserakan di tempat tidur"],
+        answer: 0,
+        explain: "Pintar! Membuang baju kotor ke keranjang membuat kamar tetap rapi dan tidak bau."
+      }
+    ];
+
+    let currentQuizIndex = 0;
+    let score = 0;
+    let quizStars = 0;
+
+    function renderQuiz() {
+      const q = quizData[currentQuizIndex];
+      document.getElementById('quiz-icon').innerText = q.icon;
+      document.getElementById('quiz-question').innerText = q.q;
+      document.getElementById('quiz-progress-text').innerText = `Soal ${currentQuizIndex + 1} dari ${quizData.length}`;
+      
+      const progressPercent = ((currentQuizIndex + 1) / quizData.length) * 100;
+      document.getElementById('quiz-progress-bar').style.width = `${progressPercent}%`;
+
+      const optContainer = document.getElementById('quiz-options');
+      optContainer.innerHTML = '';
+      
+      q.options.forEach((opt, idx) => {
+        const btn = document.createElement('button');
+        btn.className = 'bg-sky-50 hover:bg-sky-100 text-sky-950 font-bold p-4 rounded-2xl border-2 border-sky-200 text-sm sm:text-base bounce-hover text-left flex items-center justify-between group shadow-sm w-full';
+        btn.innerHTML = `<span class="flex-1">${opt}</span>`;
+        btn.onclick = () => answerQuiz(idx);
+        optContainer.appendChild(btn);
+      });
+    }
+
+    function answerQuiz(selected) {
+      const q = quizData[currentQuizIndex];
+      const fb = document.getElementById('quiz-feedback');
+      fb.classList.remove('hidden');
+
+      if (selected === q.answer) {
+        playSound('correct');
+        score += 10;
+        quizStars += 1;
+        document.getElementById('quiz-score').innerText = score;
+        document.getElementById('quiz-stars').innerText = quizStars;
+
+        fb.className = "mt-6 text-center font-bold text-sm md:text-base text-emerald-900 bg-emerald-100 p-4 rounded-2xl border-2 border-emerald-300 shadow-md";
+        fb.innerHTML = `🎉 <strong>BENAR!</strong> +10 Poin ⭐<br><span class="text-xs md:text-sm font-semibold text-emerald-800 mt-1 block">${q.explain}</span>`;
+        confetti({ particleCount: 50, spread: 60, origin: { y: 0.7 } });
+      } else {
+        playSound('wrong');
+        fb.className = "mt-6 text-center font-bold text-sm md:text-base text-rose-900 bg-rose-100 p-4 rounded-2xl border-2 border-rose-300 shadow-md";
+        fb.innerHTML = `❌ <strong>HAMPIR TEPAT!</strong><br><span class="text-xs md:text-sm font-semibold text-rose-800 mt-1 block">Ayo ingat lagi kebiasaan baik di rumah ya!</span>`;
+      }
+
+      setTimeout(() => {
+        fb.classList.add('hidden');
+        currentQuizIndex = (currentQuizIndex + 1) % quizData.length;
+        renderQuiz();
+      }, 3200);
+    }
+
+    function nextQuizManual() {
+      playSound('click');
+      currentQuizIndex = (currentQuizIndex + 1) % quizData.length;
+      renderQuiz();
+    }
+
+    /* GIM 2 MATCH DATA */
+    const matchData = [
+      { activity: "🎒 Berangkat ke sekolah", time: "Pagi", icon: "🌅" },
+      { activity: "🍱 Makan siang bersama", time: "Siang", icon: "☀️" },
+      { activity: "⚽ Bermain bersama teman", time: "Sore", icon: "🌇" },
+      { activity: "🌙 Tidur malam di kamar", time: "Malam", icon: "🌃" }
+    ];
+
+    function renderMatchGame() {
+      const container = document.getElementById('match-game');
+      container.innerHTML = '';
+
+      matchData.forEach((item, idx) => {
+        const card = document.createElement('div');
+        card.className = "p-4 bg-emerald-50 border-2 border-emerald-200 rounded-2xl flex flex-wrap justify-between items-center gap-3 shadow-sm";
+        
+        card.innerHTML = `
+          <div class="flex items-center gap-3">
+            <span class="text-3xl">${item.icon}</span>
+            <div>
+              <span class="font-bold text-slate-800 text-sm sm:text-base block">${item.activity}</span>
+            </div>
+          </div>
+          <select id="select-time-${idx}" onchange="checkMatch(${idx})" class="p-2.5 border-2 border-emerald-300 rounded-xl font-bold text-slate-800 bg-white text-xs sm:text-sm shadow-sm focus:outline-none focus:border-emerald-500">
+            <option value="">Pilih Waktu...</option>
+            <option value="Pagi">Pagi</option>
+            <option value="Siang">Siang</option>
+            <option value="Sore">Sore</option>
+            <option value="Malam">Malam</option>
+          </select>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function checkMatch(idx) {
+      const selected = document.getElementById(`select-time-${idx}`).value;
+      if (selected === matchData[idx].time) {
+        playSound('correct');
+      } else if (selected !== "") {
+        playSound('wrong');
+      }
+
+      let allCorrect = true;
+      matchData.forEach((item, i) => {
+        const val = document.getElementById(`select-time-${i}`).value;
+        if (val !== item.time) allCorrect = false;
+      });
+
+      if (allCorrect) {
+        playSound('fanfare');
+        confetti({ particleCount: 80, spread: 70, origin: { y: 0.6 } });
+        document.getElementById('match-success').classList.remove('hidden');
+      }
+    }
+
+    /* GIM 3 SUSUN KATA DATA */
+    const wordList = [
+      { word: "MAKAN", hint: "Panca dan Adik sedang...", icon: "🥣" },
+      { word: "BERDOA", hint: "Sila dan keluarga sebelum makan...", icon: "🤲" },
+      { word: "CUCI TANGAN", hint: "Sakti melakukannya sebelum makan...", icon: "🧼" },
+      { word: "JAGA KEBERSIHAN", hint: "Panca selalu membuang sampah untuk...", icon: "🧹" }
+    ];
+
+    let wordIndex = 0;
+    let currentInput = [];
+
+    function renderWordGame() {
+      const item = wordList[wordIndex];
+      document.getElementById('word-icon').innerText = item.icon;
+      document.getElementById('word-hint').innerText = item.hint;
+      
+      currentInput = item.word.split('').map(c => c === ' ' ? ' ' : '_');
+      
+      const display = document.getElementById('word-display');
+      display.innerHTML = '';
+      currentInput.forEach(char => {
+        if (char === ' ') {
+          const spaceBox = document.createElement('div');
+          spaceBox.className = "w-4 h-12";
+          display.appendChild(spaceBox);
+        } else {
+          const box = document.createElement('div');
+          box.className = "w-10 h-12 bg-purple-100 border-2 border-purple-400 rounded-xl flex items-center justify-center font-bold text-purple-950 text-xl shadow-sm";
+          box.innerText = char;
+          display.appendChild(box);
+        }
+      });
+
+      const chars = item.word.replace(/\s+/g, '').split('');
+      const letters = chars.sort(() => Math.random() - 0.5);
+      const btnContainer = document.getElementById('letter-buttons');
+      btnContainer.innerHTML = '';
+      
+      letters.forEach(char => {
+        const btn = document.createElement('button');
+        btn.className = "w-10 h-10 bg-purple-500 hover:bg-purple-600 text-white font-bold rounded-xl shadow bounce-hover text-lg flex items-center justify-center";
+        btn.innerText = char;
+        btn.onclick = () => addLetter(char);
+        btnContainer.appendChild(btn);
+      });
+    }
+
+    function addLetter(char) {
+      const item = wordList[wordIndex];
+      const emptyIdx = currentInput.indexOf("_");
+      if (emptyIdx !== -1) {
+        playSound('click');
+        currentInput[emptyIdx] = char;
+        
+        const displayContainer = document.getElementById('word-display');
+        const displayBoxes = displayContainer.children;
+        displayBoxes[emptyIdx].innerText = char;
+
+        if (!currentInput.includes("_")) {
+          const formedWord = currentInput.join('');
+          if (formedWord === item.word) {
+            playSound('correct');
+            confetti({ particleCount: 60 });
+          } else {
+            playSound('wrong');
+          }
+        }
+      }
+    }
+
+    function resetWordGame() {
+      playSound('click');
+      renderWordGame();
+    }
+
+    function nextWordGame() {
+      playSound('click');
+      wordIndex = (wordIndex + 1) % wordList.length;
+      renderWordGame();
+    }
+
+    /* GIM 4 DRAG AND DROP GAME LOGIC */
+    const dndItemsMaster = [
+      { id: 'item-1', text: '🛏️ Merapikan tempat tidur', type: 'good' },
+      { id: 'item-2', text: '🧸 Membiarkan mainan berserakan', type: 'bad' },
+      { id: 'item-3', text: '🧼 Mencuci tangan sebelum makan', type: 'good' },
+      { id: 'item-4', text: '👟 Melempar sepatu sembarangan', type: 'bad' },
+      { id: 'item-5', text: '🪥 Menggosok gigi sebelum tidur', type: 'good' },
+      { id: 'item-6', text: '📺 Menonton TV sampai larut malam', type: 'bad' },
+      { id: 'item-7', text: '🧹 Membantu menyapu lantai', type: 'good' },
+      { id: 'item-8', text: '🗣️ Berteriak saat bicara pada orang tua', type: 'bad' }
+    ];
+
+    let dndPoolState = [];
+    let dndGoodState = [];
+    let dndBadState = [];
+    let selectedCardId = null;
+    let touchDraggedItem = null;
+    let touchClone = null;
+
+    function initDndGame() {
+      dndPoolState = [...dndItemsMaster].sort(() => Math.random() - 0.5);
+      dndGoodState = [];
+      dndBadState = [];
+      selectedCardId = null;
+      document.getElementById('dnd-success-modal').classList.add('hidden');
+      document.getElementById('btn-reset-dnd').classList.remove('hidden');
+      showDndFeedback('');
+      renderDndGame();
+    }
+
+    function renderDndGame() {
+      // Update sisa kartu
+      const remainingEl = document.getElementById('dnd-remaining');
+      if (remainingEl) remainingEl.innerText = dndPoolState.length;
+
+      // Render Pool
+      const poolContainer = document.getElementById('drag-pool');
+      if (!poolContainer) return;
+      poolContainer.innerHTML = '';
+
+      if (dndPoolState.length === 0 && dndGoodState.length + dndBadState.length === dndItemsMaster.length) {
+        poolContainer.innerHTML = `<span class="text-emerald-700 font-bold text-sm bg-emerald-100 px-4 py-2 rounded-2xl border border-emerald-300">✨ Luar biasa! Semua kartu telah berhasil dikelompokkan!</span>`;
+      } else {
+        dndPoolState.forEach(item => {
+          const isSelected = selectedCardId === item.id;
+          const card = document.createElement('div');
+          card.id = item.id;
+          card.draggable = true;
+          
+          // Event Drag Komputer
+          card.ondragstart = (e) => handleDragStart(e, item.id);
+          
+          // Event Sentuh Layar HP / Tablet
+          card.ontouchstart = (e) => handleTouchStart(e, item);
+          card.ontouchmove = (e) => handleTouchMove(e);
+          card.ontouchend = (e) => handleTouchEnd(e);
+
+          // Event Klik / Ketuk
+          card.onclick = (e) => { e.stopPropagation(); selectDndCard(item.id); };
+          
+          card.className = `drag-card p-3 rounded-2xl font-bold text-xs md:text-sm border-2 shadow-sm transition-all duration-150 flex flex-col items-center gap-2 ${
+            isSelected 
+              ? 'bg-amber-100 border-amber-500 text-amber-950 ring-4 ring-amber-300 scale-105 z-10' 
+              : 'bg-white border-slate-200 hover:border-purple-300 text-slate-800 hover:bg-purple-50'
+          }`;
+          
+          let cardHtml = `<span>${item.text}</span>`;
+          if (isSelected) {
+            cardHtml += `
+              <div class="flex gap-1.5 mt-1 w-full justify-center">
+                <button onclick="event.stopPropagation(); processPlacement('${item.id}', 'good')" class="bg-emerald-500 hover:bg-emerald-600 text-white text-[11px] font-extrabold px-2.5 py-1 rounded-xl shadow">🟢 Mematuhi</button>
+                <button onclick="event.stopPropagation(); processPlacement('${item.id}', 'bad')" class="bg-rose-500 hover:bg-rose-600 text-white text-[11px] font-extrabold px-2.5 py-1 rounded-xl shadow">🔴 Tidak Mematuhi</button>
+              </div>
+            `;
+          }
+          
+          card.innerHTML = cardHtml;
+          poolContainer.appendChild(card);
+        });
+      }
+
+      // Render Zone Good
+      const goodContainer = document.getElementById('cards-good');
+      if (goodContainer) {
+        goodContainer.innerHTML = '';
+        dndGoodState.forEach(item => {
+          const c = document.createElement('div');
+          c.className = "bg-white p-2.5 rounded-2xl border-2 border-emerald-300 text-emerald-950 text-xs md:text-sm font-bold flex items-center justify-between shadow-sm animate-fade-in";
+          c.innerHTML = `<span>${item.text}</span> <span class="text-emerald-600 font-extrabold bg-emerald-100 px-2 py-0.5 rounded-full text-xs">✓ Mematuhi</span>`;
+          goodContainer.appendChild(c);
+        });
+      }
+
+      // Render Zone Bad
+      const badContainer = document.getElementById('cards-bad');
+      if (badContainer) {
+        badContainer.innerHTML = '';
+        dndBadState.forEach(item => {
+          const c = document.createElement('div');
+          c.className = "bg-white p-2.5 rounded-2xl border-2 border-rose-300 text-rose-950 text-xs md:text-sm font-bold flex items-center justify-between shadow-sm animate-fade-in";
+          c.innerHTML = `<span>${item.text}</span> <span class="text-rose-600 font-extrabold bg-rose-100 px-2 py-0.5 rounded-full text-xs">✓ Tidak Mematuhi</span>`;
+          badContainer.appendChild(c);
+        });
+      }
+    }
+
+    function selectDndCard(id) {
+      playSound('click');
+      if (selectedCardId === id) {
+        selectedCardId = null;
+        showDndFeedback('');
+      } else {
+        selectedCardId = id;
+        showDndFeedback('👉 Ketuk tombol 🟢/🔴 pada kartu atau ketuk kotak tujuan!', 'info');
+      }
+      renderDndGame();
+    }
+
+    function handleDragStart(e, id) {
+      playSound('click');
+      selectedCardId = id;
+      e.dataTransfer.setData('text/plain', id);
+    }
+
+    function handleTouchStart(e, item) {
+      touchDraggedItem = item;
+      selectedCardId = item.id;
+      playSound('click');
+      renderDndGame();
+    }
+
+    function handleTouchMove(e) {
+      if (!touchDraggedItem) return;
+      e.preventDefault();
+      const touch = e.touches[0];
+      
+      if (!touchClone) {
+        const orig = document.getElementById(touchDraggedItem.id);
+        if (orig) {
+          touchClone = orig.cloneNode(true);
+          touchClone.style.position = 'fixed';
+          touchClone.style.zIndex = '1000';
+          touchClone.style.pointerEvents = 'none';
+          touchClone.style.opacity = '0.9';
+          touchClone.style.transform = 'scale(1.08)';
+          document.body.appendChild(touchClone);
+        }
+      }
+      
+      if (touchClone) {
+        touchClone.style.left = (touch.clientX - 60) + 'px';
+        touchClone.style.top = (touch.clientY - 30) + 'px';
+      }
+    }
+
+    function handleTouchEnd(e) {
+      if (!touchDraggedItem) return;
+      if (touchClone) {
+        touchClone.remove();
+        touchClone = null;
+      }
+      
+      const touch = e.changedTouches[0];
+      const targetEl = document.elementFromPoint(touch.clientX, touch.clientY);
+      
+      if (targetEl) {
+        const goodZone = targetEl.closest('#zone-good');
+        const badZone = targetEl.closest('#zone-bad');
+        if (goodZone) {
+          processPlacement(touchDraggedItem.id, 'good');
+        } else if (badZone) {
+          processPlacement(touchDraggedItem.id, 'bad');
+        }
+      }
+      
+      touchDraggedItem = null;
+    }
+
+    function allowDrop(e) {
+      e.preventDefault();
+      const zone = e.currentTarget;
+      zone.classList.add('drop-highlight');
+    }
+
+    function leaveZone(e) {
+      const zone = e.currentTarget;
+      zone.classList.remove('drop-highlight');
+    }
+
+    function handleDrop(e, targetType) {
+      e.preventDefault();
+      leaveZone(e);
+      const id = e.dataTransfer.getData('text/plain') || selectedCardId;
+      if (id) {
+        processPlacement(id, targetType);
+      }
+    }
+
+    function handleZoneClick(targetType) {
+      if (selectedCardId) {
+        processPlacement(selectedCardId, targetType);
+      }
+    }
+
+    function processPlacement(cardId, targetType) {
+      const itemIndex = dndPoolState.findIndex(i => i.id === cardId);
+      if (itemIndex === -1) return;
+
+      const item = dndPoolState[itemIndex];
+
+      if (item.type === targetType) {
+        // JAWABAN BENAR
+        playSound('correct');
+        dndPoolState.splice(itemIndex, 1);
+        if (targetType === 'good') {
+          dndGoodState.push(item);
+        } else {
+          dndBadState.push(item);
+        }
+        selectedCardId = null;
+        showDndFeedback(`🎉 Benar! "${item.text}" dimasukkan dengan tepat!`, 'success');
+
+        if (dndPoolState.length === 0) {
+          setTimeout(() => {
+            playSound('fanfare');
+            confetti({ particleCount: 90, spread: 80, origin: { y: 0.6 } });
+            const modal = document.getElementById('dnd-success-modal');
+            if (modal) modal.classList.remove('hidden');
+            const btnReset = document.getElementById('btn-reset-dnd');
+            if (btnReset) btnReset.classList.add('hidden');
+            showDndFeedback('');
+          }, 400);
+        }
+        renderDndGame();
+      } else {
+        // JAWABAN SALAH
+        playSound('wrong');
+        showDndFeedback(`❌ Kurang tepat! Coba pikirkan lagi, apakah "${item.text}" mematuhi aturan atau tidak?`, 'error');
+        
+        const cardElem = document.getElementById(cardId);
+        if (cardElem) {
+          cardElem.classList.add('shake-anim');
+          setTimeout(() => {
+            if (cardElem) cardElem.classList.remove('shake-anim');
+            renderDndGame();
+          }, 400);
+        } else {
+          renderDndGame();
+        }
+      }
+    }
+
+    function showDndFeedback(msg, type) {
+      const fb = document.getElementById('dnd-feedback');
+      if (!fb) return;
+      if (!msg) {
+        fb.classList.add('hidden');
+        return;
+      }
+      fb.classList.remove('hidden');
+      fb.innerText = msg;
+
+      if (type === 'success') {
+        fb.className = "text-center p-3 rounded-2xl text-xs md:text-sm font-bold w-full max-w-md bg-emerald-100 text-emerald-950 border border-emerald-300 shadow-sm";
+      } else if (type === 'error') {
+        fb.className = "text-center p-3 rounded-2xl text-xs md:text-sm font-bold w-full max-w-md bg-rose-100 text-rose-950 border border-rose-300 shadow-sm";
+      } else {
+        fb.className = "text-center p-3 rounded-2xl text-xs md:text-sm font-bold w-full max-w-md bg-purple-100 text-purple-950 border border-purple-300 shadow-sm";
+      }
+    }
+
+    function resetDndGame() {
+      playSound('click');
+      initDndGame();
+    }
+
+    // Inisialisasi Aplikasi saat Load
+    window.onload = () => {
+      initAudio();
+      renderQuiz();
+      renderMatchGame();
+      renderWordGame();
+      initDndGame();
+      
+      document.body.addEventListener('click', () => {
+        initAudio();
+      }, { once: true });
+    };
+  </script>
+</body>
+</html>
+```
